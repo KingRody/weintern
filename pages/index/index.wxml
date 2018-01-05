@@ -4,7 +4,7 @@
 		<image src='../../icons/header_logo.png' class="header_logo_container"></image>
 		<form bindsubmit='formSubmit' bindreset='formReset'>
 			<view class="job_search_bar flex">
-				<input name="search" placeholder="请输入公司名称/岗位名称/岗位类型搜索" focus/>
+				<input name="search" placeholder="请输入公司名称/岗位名称/岗位类型搜索" class="flex" placeholder-style="font-size:26rpx"/>
 				<!-- <button type='submit'>
 					<icon type="search" size="20"/>搜索
 				</button>        -->

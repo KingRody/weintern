@@ -16,14 +16,21 @@ form{
   margin-top: -130rpx;
 }
 .job_search_bar input{
-  padding-left:20rpx;
-  width: 600rpx;
-  height: 60rpx;
-  border-radius:15px;
-  border: 2px solid transparent;
-  background: #fff; 
-  font-size: 28rpx;
+	padding-left:20rpx;
+	width: 700rpx;
+	height: 62rpx;
+	border-radius:15px;
+	border: 2px solid transparent;
+	background: #fff;
 }
+.job_search_bar input:before {
+	font-family: 'iconfont';
+	content: '\e618';
+	font-size: 30rpx;
+	margin-right: 20rpx;
+	color: rgba(0,0,0,.3);
+}
+
 .job_search_bar button{
   height: 60rpx;
   text-align: center;
@@ -51,7 +58,7 @@ form{
 }
 .select-categories .picker_title:before {
   font-family: 'iconfont';
-  content: '\e607';
+  content: '\e61f';
   font-size: 25rpx;
   margin-right: 10rpx;
 }
