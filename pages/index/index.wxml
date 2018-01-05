@@ -1,13 +1,76 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+	<view class="logo-header">
+		<image src='../../icons/header_logo.png' class="header_logo_container"></image>
+		<form bindsubmit='formSubmit' bindreset='formReset'>
+			<view class="job_search_bar flex">
+				<input name="search" placeholder="请输入公司名称/岗位名称/岗位类型搜索" focus/>
+				<!-- <button type='submit'>
+					<icon type="search" size="20"/>搜索
+				</button>        -->
+			</view>
+		</form>
+	</view>
+	<view class="select-box flex">
+		<view class="select select-categories text-over">
+			<view class="section section-type">
+				<picker bindchange="bindPickerChangeCategories" value="{{cat_index}}" range="{{categoriesArr}}">
+					<view class="picker flex">
+						<text class='picker_title' wx:if="{{cat_index === null}}">职位类型 ></text>
+						<text class='picker_type'>{{categoriesArr[cat_index]}}</text>
+					</view>
+				</picker>
+			</view>
+		</view>
+		<view class="select select-condition text-over">
+			<view class="section">
+				<picker bindchange="bindPickerChangeConditions" value="{{con_index}}" range="{{conditionArr}}">
+					<view class="picker flex">
+						<text class='picker_title' wx:if="{{con_index === null}}">筛选条件 ></text>
+						<text class='picker_type'>{{conditionArr[con_index]}}</text>
+					</view>
+				</picker>
+			</view>
+		</view>
+	</view>
+	<view class="job-box flex">
+		<view class="job-list">
+			<block wx:if="jobs.length > 0">
+				<view wx:for="{{jobs}}">
+					<view class="job-info flex" bindtap='detail' data-job="{{item}}">
+						<view class="company-logo">
+							<image src="https://www.weservice.cn/uploads/{{item.image}}"></image>
+						</view>
+						<view class="job-detail flex-column">
+							<view class="job-detail-item jobname">
+								<text class="job-title text-over">{{item.jobname}}</text>
+								<text class="refresh-item highlight-light">{{item.meta.updateAt}} 刷新</text>
+							</view>
+							<view class="job-detail-item company highlight-light">
+								<text class="intern-company text-over">{{item.company}}</text>
+							</view>
+							<view class="job-detail-item job-intro">
+								<view class="detail_item worksite text-over highlight-light flex">
+									<text class="intern-worksite">{{item.worksite.addr}}</text>
+								</view>
+								<view class="detail_item intern-week text-over highlight-light flex">
+									<text class="intern-day">{{item.internWeek}}</text>
+									天/周
+								</view>
+								<view class="detail_item salary text-over flex">
+									<text class="intern-salary highlight-heavy ">{{item.salary}}</text>
+									/天
+								</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</block>
+			<block wx:if="{{jobs.length === 0}}">
+				<view class="empty-container flex">
+					<text class="empty-body highlight-light">抱歉啦,没有您想要的结果哎</text>
+				</view>
+			</block>
+		</view>
+	</view>
 </view>

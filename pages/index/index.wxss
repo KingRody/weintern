@@ -1,21 +1,150 @@
 /**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+form{
+  width: 100%;
+}
+.logo-header{
+  margin-top: -60rpx;
+  width: 100%;
+  height: 450rpx;
+}
+.header_logo_container{
+  width: 100%;
+  height: 450rpx;
+}
+.job_search_bar{
+  padding: 0 100rpx 0 100rpx;
+  margin-top: -130rpx;
+}
+.job_search_bar input{
+  padding-left:20rpx;
+  width: 600rpx;
+  height: 60rpx;
+  border-radius:15px;
+  border: 2px solid transparent;
+  background: #fff; 
+  font-size: 28rpx;
+}
+.job_search_bar button{
+  height: 60rpx;
+  text-align: center;
+  line-height: 60rpx;
+  background: #fff;
+  border-radius:15px;
+}
+.select-box{
+  width: 100%;
+  border-bottom: 1rpx solid rgba(0,0,0,.1);
+  box-sizing: content-box;
+}
+.select{
+  width: 50%;
+}
+.section-type {
+  border-right: 1rpx solid rgba(0,0,0,.1);
+}
+.section{
+  padding: 20rpx 30rpx;
+}
+.picker_title {
+  color: rgba(0,0,0,.5);
+  font-size: 30rpx;
+}
+.select-categories .picker_title:before {
+  font-family: 'iconfont';
+  content: '\e607';
+  font-size: 25rpx;
+  margin-right: 10rpx;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.select-condition .picker_title:before {
+  font-family: 'iconfont';
+  content: '\e748';
+  font-size: 25rpx;
+  margin-right: 10rpx;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.picker_type{
+  color: deepskyblue;
+  font-size: 32rpx;
+}
+.job-box{
+  width: 100%;
+  overflow-y: auto;
+}
+.job-list{
+  width: 100%;
+  padding: 10rpx;
+}
+.job-info{
+  padding: 10rpx 0;
+  border-bottom: 1rpx solid rgba(0,0,0,.1);
+}
+.company-logo{
+  width: 25%;
+  padding: 0 5rpx;
+}
+.company-logo image{
+  width: 150rpx;
+  height: 150rpx;
+}
+.job-detail{
+  width: 75%;
+}
+.job-detail .job-detail-item {
+  width: 100%;
+  margin: 10rpx 0;
+}
+.job-detail .job-detail-item .detail_item{
+  display: inline-block;
+  width: 33%;
+  font-size: 25rpx;
+}
+.job-detail .jobname{
+  text-align: justify;
+}
+.job-title, .refresh-item {
+  display: inline-block;
+  width: 50%;
+}
+.refresh-item {
+  text-align: right;
+}
+.refresh-item, .worksite, .intern-week, .company{
+  font-size: 24rpx;
+}
+.intern-day:before{
+  font-family: 'iconfont';
+  content: '\e6a9';
+  font-size: 25rpx;
+  margin-right: 10rpx;
+}
+.intern-worksite:before {
+  font-family: 'iconfont';
+  content: '\e613';
+  font-size: 25rpx;
+  margin-right: 10rpx;
+}
+.intern-salary:before {
+  font-family: 'iconfont';
+  content: '\e6fe';
+  font-size: 25rpx;
+  margin-right: 10rpx;
+}
+.intern-company:before{
+  font-family: 'iconfont';
+  content: '\e607';
+  font-size: 25rpx;
+  margin-right: 10rpx;
+}
+.empty-body:before{
+  font-family: 'iconfont';
+  content: '\e639';
+  font-size: 40rpx;
+  margin-right: 10rpx;
+}
+.empty-container{
+  padding-top: 300rpx;
 }
 
-.usermotto {
-  margin-top: 200px;
-}
+
+        

@@ -1,15 +1,46 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/userCenter/userInfo"
+    "pages/userCenter/userInfo",
+    "pages/favorite/favorite",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f5f5f7",
+    "navigationBarBackgroundColor": "#1296db",
     "navigationBarTitleText": "交大实习圈",
-    "navigationBarTextStyle": "black",
+    "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true,
     "onReachBottomDistance": "60"
-  }
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "color": "#999",
+    "selectedColor": "#000",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "机会",
+        "iconPath": "icons/job_inactive.png",
+        "selectedIconPath": "icons/job_active.png"
+      },
+      {
+        "pagePath": "pages/favorite/favorite",
+        "text": "收藏",
+        "iconPath": "icons/favorite_inactive.png",
+        "selectedIconPath": "icons/favorite_active.png"
+      },
+      {
+        "pagePath": "pages/userCenter/userInfo",
+        "text": "我的",
+        "iconPath": "icons/user_inactive.png",
+        "selectedIconPath": "icons/user_active.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
 }
