@@ -24,10 +24,10 @@
 		</view>
 		<view class="select select-condition text-over">
 			<view class="section">
-				<picker bindchange="bindPickerChangeConditions" value="{{con_index}}" range="{{conditionArr}}">
+				<picker mode="multiSelector" bindchange="bindMultiPickerChange" value="{{multiIndex}}" range="{{multiCondition}}">
 					<view class="picker flex">
-						<text class='picker_title' wx:if="{{con_index === null}}">筛选条件 ></text>
-						<text class='picker_type'>{{conditionArr[con_index]}}</text>
+						<text class="picker_title">筛选条件 ></text>
+						<text class='picker_type' wx:if="{{multiIndexLen !== 0}}">{{multiIndexLen}}</text>
 					</view>
 				</picker>
 			</view>

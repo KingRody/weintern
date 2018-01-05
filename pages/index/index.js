@@ -59,8 +59,9 @@ Page({
 		categories: [],
 		categoriesArr: [],
 		cat_index: null,
-		conditionArr: ['每周实习天数', '实习日薪', '实习月数', '学历要求', '能否转正'],
-		con_index: null,
+		multiCondition: [['不限', '1-3天', '3天以上'], ['不限', '1-3月', '3月以上'], ['不限', '100-200', '200以上'], ['不限', '大专', '本科', '硕士及以上'], ['不限', '不可转正', '可转正']],
+		multiIndex:[0,0,0,0,0],
+		multiIndexLen: 0,
 		jobs:[]
 	},
 	
@@ -131,13 +132,20 @@ Page({
   },
   
 	// 点击修改筛选条件
-	bindPickerChangeConditions: function(e) {
-		console.log(e.detail.value)
+	bindMultiPickerChange: function (e) {
+		console.log('picker发送选择改变，携带值为', e.detail.value);
+		let len = 0;
+		e.detail.value.forEach((item) => {
+			item !== 0 ? len++ : len;
+		});
+		
 		this.setData({
-			con_index: e.detail.value
+			multiIndex: e.detail.value,
+			multiIndexLen: len
 		})
 	},
 
+	
 	// 点击进入详情页面
   detail: function(e) {
 		console.log(e);
