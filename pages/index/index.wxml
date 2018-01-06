@@ -4,20 +4,17 @@
 		<image src='../../icons/header_logo.png' class="header_logo_container"></image>
 		<form bindsubmit='formSubmit' bindreset='formReset'>
 			<view class="job_search_bar flex">
-				<input name="search" placeholder="请输入公司名称/岗位名称/岗位类型搜索" class="flex" placeholder-style="font-size:26rpx"/>
-				<!-- <button type='submit'>
-					<icon type="search" size="20"/>搜索
-				</button>        -->
+				<input name="search" bindinput="getKeyboard" confirm-type="search" placeholder="请输入公司名称/岗位名称/岗位类型搜索" class="flex" placeholder-style="font-size:26rpx" focus="{{focus}}"/>
 			</view>
 		</form>
 	</view>
 	<view class="select-box flex">
-		<view class="select select-categories text-over">
-			<view class="section section-type">
+		<view class="select select-categories text-over select-type">
+			<view class="section">
 				<picker bindchange="bindPickerChangeCategories" value="{{cat_index}}" range="{{categoriesArr}}">
 					<view class="picker flex">
-						<text class='picker_title' wx:if="{{cat_index === null}}">职位类型 ></text>
-						<text class='picker_type'>{{categoriesArr[cat_index]}}</text>
+						<text class='picker_title'>职位类型 ></text>
+						<text class='picker_type text-over' wx:if="cat_index !== null">{{categoriesArr[cat_index]}}</text>
 					</view>
 				</picker>
 			</view>
@@ -27,7 +24,7 @@
 				<picker mode="multiSelector" bindchange="bindMultiPickerChange" value="{{multiIndex}}" range="{{multiCondition}}">
 					<view class="picker flex">
 						<text class="picker_title">筛选条件 ></text>
-						<text class='picker_type' wx:if="{{multiIndexLen !== 0}}">{{multiIndexLen}}</text>
+						<text class="picker_type text-over">{{multiIndexLen}}</text>
 					</view>
 				</picker>
 			</view>
@@ -46,20 +43,20 @@
 								<text class="job-title text-over">{{item.jobname}}</text>
 								<text class="refresh-item highlight-light">{{item.meta.updateAt}} 刷新</text>
 							</view>
-							<view class="job-detail-item company highlight-light">
-								<text class="intern-company text-over">{{item.company}}</text>
+							<view class="job-detail-item company highlight-light text-over">
+								<text class="intern-company">{{item.company}}</text>
 							</view>
 							<view class="job-detail-item job-intro">
 								<view class="detail_item worksite text-over highlight-light flex">
 									<text class="intern-worksite">{{item.worksite.addr}}</text>
 								</view>
 								<view class="detail_item intern-week text-over highlight-light flex">
-									<text class="intern-day">{{item.internWeek}}</text>
-									天/周
+									<text class="intern-day" wx:if="{{item.internWeek != '0'}}">{{item.internWeek}}天/周</text>
+									<text class="intern-day" wx:if="{{item.internWeek == '0'}}">实习天数面议</text>
 								</view>
 								<view class="detail_item salary text-over flex">
-									<text class="intern-salary highlight-heavy ">{{item.salary}}</text>
-									/天
+									<text class="intern-salary highlight-heavy " wx:if="{{item.salary != '不限' && item.salary != '不详'}}">{{item.salary}}/天</text>
+									<text class="intern-salary highlight-heavy " wx:if="{{item.salary == '不限' || item.salary == '不详'}}">薪资不限</text>
 								</view>
 							</view>
 						</view>

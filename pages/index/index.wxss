@@ -46,15 +46,15 @@ form{
 .select{
   width: 50%;
 }
-.section-type {
+.select-type {
   border-right: 1rpx solid rgba(0,0,0,.1);
 }
 .section{
-  padding: 20rpx 30rpx;
+  padding: 20rpx 10rpx;
 }
 .picker_title {
   color: rgba(0,0,0,.5);
-  font-size: 30rpx;
+  font-size: 25rpx;
 }
 .select-categories .picker_title:before {
   font-family: 'iconfont';
@@ -71,9 +71,12 @@ form{
 }
 
 .picker_type{
+  display: inline-block;
+  padding-top: 10rpx;
+  width: 60rpx;
+  height: 40rpx;
   color: deepskyblue;
-  font-size: 26rpx;
-  /*margin-top: 5rpx;*/
+  font-size: 25rpx;
 }
 .job-box{
   width: 100%;
@@ -107,12 +110,19 @@ form{
   width: 33%;
   font-size: 25rpx;
 }
+.salary{
+  text-align: right;
+}
 .job-detail .jobname{
   text-align: justify;
 }
-.job-title, .refresh-item {
+.job-title {
   display: inline-block;
-  width: 50%;
+  width: 70%;
+}
+.refresh-item{
+  display: inline-block;
+  width: 30%;
 }
 .refresh-item {
   text-align: right;
