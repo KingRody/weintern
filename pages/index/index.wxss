@@ -12,13 +12,13 @@ form{
   height: 450rpx;
 }
 .job_search_bar{
-  padding: 0 100rpx 0 100rpx;
+  padding: 0 50rpx 0 50rpx;
   margin-top: -130rpx;
 }
 .job_search_bar input{
 	padding-left:20rpx;
 	width: 700rpx;
-	height: 62rpx;
+	height: 60rpx;
 	border-radius:15px;
 	border: 2px solid transparent;
 	background: #fff;
@@ -30,13 +30,14 @@ form{
 	margin-right: 20rpx;
 	color: rgba(0,0,0,.3);
 }
-
 .job_search_bar button{
-  height: 60rpx;
-  text-align: center;
-  line-height: 60rpx;
-  background: #fff;
-  border-radius:15px;
+  padding: 1rpx 30rpx 1rpx 20rpx;
+  letter-spacing: 8rpx;
+  white-space:nowrap;
+  margin-left:20rpx;
+  color:rgba(0,0,0,.4);
+  border: 1px solid rgba(0,0,0,.2);
+  border-radius: 20rpx;
 }
 .select-box{
   width: 100%;

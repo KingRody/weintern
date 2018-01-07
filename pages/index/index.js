@@ -56,7 +56,6 @@ const formatDay = require('../../utils/util');
 // })
 Page({
 	data: {
-		autofocus: false,
 		focus: false,  // 聚焦后拉起软键盘
 		queryData: {}, // 筛选条件
 		categories: [], // 岗位类型数组
@@ -67,7 +66,8 @@ Page({
 		multiIndex: [0, 0, 0, 0, 0], // 多列选择选定的筛选条件
 		multiIndexLen: 0, // 多列选择筛选条件的长度
 		jobs: [],
-		jobsTmp:[]
+		jobsTmp:[],
+		allJobs:[]
 	},
 	
 	onLoad: function () {
@@ -107,7 +107,8 @@ Page({
 					});
 					that.setData({
 						jobs: data.data,
-						jobsTmp: data.data
+						jobsTmp: data.data,
+						allJobs: data.data
 					})
 				}
 			}
@@ -232,10 +233,42 @@ Page({
 		})
 	},
 	
-	bindButtonTap: function () {
-		this.setData({
-			autofocus: true
+	// 提交搜索
+	formSubmit: function (e) {
+		wxRequest('jobSearch', {
+			method: 'get',
+			data: {
+				searchType: e.detail.value.search
+			},
+			success: (res) => {
+				let data = res.data;
+				if (data.success) {
+					if (data.data && data.data.length > 0) {
+						data.data.forEach((item) => {
+							item.meta.updateAt = formatDay.formatDay(item.meta.updateAt);
+						});
+						this.setData({
+							jobs: data.data,
+							jobsTmp: data.data
+						})
+					}else {
+						this.setData({
+							jobs:[]
+						})
+					}
+				}
+			}
 		})
+	},
+	
+	// 判断搜索框是否为空，如果为空，则代表不进行搜索，拿到所以工作数据
+	isReset: function (e) {
+		let that = this;
+		if (e.detail.value.trim() === '') {
+			this.setData({
+				jobs: that.data.allJobs
+			})
+		}
 	}
 });
 
