@@ -1,59 +1,7 @@
 //index.js
 const wxRequest = require('../../utils/request');
 const formatDay = require('../../utils/util');
-// //获取应用实例
-// const app = getApp();
-//
-// Page({
-//   data: {
-//     motto: '点击进入小程序',
-//     userInfo: {},
-//     hasUserInfo: false,
-//     canIUse: wx.canIUse('button.open-type.getUserInfo')
-//   },
-//   //事件处理函数
-//   bindViewTap: function() {
-//     wx.navigateTo({
-//       url: '../logs/logs'
-//     })
-//   },
-//   onLoad: function () {
-//     if (app.globalData.userInfo) {
-//       this.setData({
-//         userInfo: app.globalData.userInfo,
-//         hasUserInfo: true
-//       })
-//     } else if (this.data.canIUse){
-//       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-//       // 所以此处加入 callback 以防止这种情况
-//       app.userInfoReadyCallback = res => {
-//         this.setData({
-//           userInfo: res.userInfo,
-//           hasUserInfo: true
-//         })
-//       }
-//     } else {
-//       // 在没有 open-type=getUserInfo 版本的兼容处理
-//       wx.getUserInfo({
-//         success: res => {
-//           app.globalData.userInfo = res.userInfo
-//           this.setData({
-//             userInfo: res.userInfo,
-//             hasUserInfo: true
-//           })
-//         }
-//       })
-//     }
-//   },
-//   getUserInfo: function(e) {
-//     console.log(e)
-//     app.globalData.userInfo = e.detail.userInfo
-//     this.setData({
-//       userInfo: e.detail.userInfo,
-//       hasUserInfo: true
-//     })
-//   }
-// })
+
 Page({
 	data: {
 		focus: false,  // 聚焦后拉起软键盘
@@ -151,9 +99,11 @@ Page({
 		if (this.data.categoryId) {
 			queryData.categoryId = this.data.categoryId;
 			jobs = jobs.filter((item) => {
-				return item.category.toString() == queryData.categoryId.toString();
+				return item.category._id.toString() == queryData.categoryId.toString();
 			})
 		}
+		
+		// 过滤掉实习天数
 		if (e.detail.value[0] != 0) {
 			queryData.internWeek = this.data.multiCondition[0][e.detail.value[0]];
 			if (e.detail.value[0] == 1) {
@@ -166,6 +116,8 @@ Page({
 				})
 			}
 		}
+		
+		// 过滤掉实习月份
 		if (e.detail.value[1] != 0) {
 			queryData.internMonth = this.data.multiCondition[1][e.detail.value[1]];
 			if (e.detail.value[1] == 1) {
@@ -178,6 +130,8 @@ Page({
 				})
 			}
 		}
+		
+		// 过滤掉实习薪水
 		if (e.detail.value[2] != 0) {
 			queryData.salary = this.data.multiCondition[2][e.detail.value[2]];
 			if (e.detail.value[2] == 1) {
@@ -190,12 +144,16 @@ Page({
 				})
 			}
 		}
+		
+		// 过滤最低学历要求
 		if (e.detail.value[3] != 0) {
 			queryData.education = this.data.multiCondition[3][e.detail.value[3]];
 			jobs = jobs.filter((item) => {
 				return item.education == queryData.education;
 			})
 		}
+		
+		// 过滤是否可转正
 		if (e.detail.value[4] != 0) {
 			queryData.canBeRegular = this.data.multiCondition[4][e.detail.value[4]];
 			jobs = jobs.filter((item) => {
@@ -220,7 +178,6 @@ Page({
 	
 	// 点击进入详情页面
 	detail: function (e) {
-		console.log(e);
 		wx.navigateTo({
 			url: `../detail/detail?job=${e.currentTarget.dataset['job']}`
 		})
