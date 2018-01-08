@@ -20,18 +20,20 @@ form{
 	width: 700rpx;
 	height: 60rpx;
 	border-radius:15px;
-	border: 2px solid transparent;
+	/*border: 2px solid transparent;*/
 	background: #fff;
 }
-.job_search_bar input:before {
+.job_search_bar input:after {
 	font-family: 'iconfont';
 	content: '\e618';
-	font-size: 30rpx;
+	font-size: 28rpx;
 	margin-right: 20rpx;
+  margin-top: 8rpx;
 	color: rgba(0,0,0,.3);
 }
+
 .job_search_bar button{
-  padding: 1rpx 30rpx 1rpx 20rpx;
+  padding: 0 30rpx 0 20rpx;
   letter-spacing: 8rpx;
   white-space:nowrap;
   margin-left:20rpx;
