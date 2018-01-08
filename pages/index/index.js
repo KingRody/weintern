@@ -23,8 +23,9 @@ Page({
 		wx.showToast({
 			title: '正在加载中',
 			icon: 'loading',
-			duration: 2000
+			duration: 5000
 		});
+		wx.showNavigationBarLoading();
 		
 		// 获取所有岗位类型
 		wxRequest('categories', {
@@ -57,7 +58,9 @@ Page({
 						jobs: data.data,
 						jobsTmp: data.data,
 						allJobs: data.data
-					})
+					});
+					wx.hideNavigationBarLoading();
+					wx.hideToast();
 				}
 			}
 		})

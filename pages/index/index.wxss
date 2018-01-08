@@ -1,4 +1,7 @@
 /**index.wxss**/
+.container{
+  overflow-x: hidden;
+}
 form{
   width: 100%;
 }
@@ -84,6 +87,7 @@ form{
 .job-box{
   width: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .job-list{
   width: 100%;

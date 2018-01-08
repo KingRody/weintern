@@ -13,7 +13,7 @@ let wxRequest = function(path, params) {
 		method: params.method || 'GET',
 		data: params.data || {},
 		header: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'json'
 		},
 		success: function(res) {
 			params.success && params.success(res)
