@@ -226,6 +226,30 @@ Page({
 				jobs: that.data.allJobs
 			})
 		}
+	},
+	
+	// 下拉刷新
+	onPullDownRefresh: function () {
+		let that = this;
+		wx.showNavigationBarLoading();
+		wxRequest('jobs', {
+			method: 'get',
+			success: (res) => {
+				let data = res.data;
+				if (data.success) {
+					data.data.forEach((item) => {
+						item.meta.updateAt = formatDay.formatDay(item.meta.updateAt);
+					});
+					that.setData({
+						jobs: data.data,
+						jobsTmp: data.data,
+						allJobs: data.data
+					});
+					wx.hideNavigationBarLoading();
+					wx.stopPullDownRefresh();
+				}
+			}
+		});
 	}
 });
 

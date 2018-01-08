@@ -10,7 +10,6 @@
     "navigationBarBackgroundColor": "#1296db",
     "navigationBarTitleText": "交大实习圈",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true,
     "onReachBottomDistance": "60"
   },
   "tabBar": {
