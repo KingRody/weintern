@@ -35,7 +35,7 @@
 		<view class="job-list">
 			<block wx:if="jobs.length > 0">
 				<view wx:for="{{jobs}}">
-					<view class="job-info flex" bindtap='detail' data-job="{{item}}">
+					<view class="job-info flex" bindtap='detail' data-job="{{item._id}}">
 						<view class="company-logo">
 							<image src="https://www.weservice.cn/uploads/{{item.image}}"></image>
 						</view>

@@ -16,7 +16,13 @@ const formatNumber = n => {
 const formatDay = date => {
 	return [date.split('T')[0].split('-')[1], date.split('T')[0].split('-')[2]].join('-');
 }
+
+const formatYear = date => {
+  return date.split('T')[0];
+}
+
 module.exports = {
   formatTime: formatTime,
-  formatDay: formatDay
+  formatDay: formatDay,
+  formatYear: formatYear
 }

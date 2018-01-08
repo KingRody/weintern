@@ -1,1 +1,257 @@
 /* pages/detail/detail.wxss */
+
+.container{
+	background-color:rgba(0,0,0, .1);
+}
+.job-header-container, .job-body, .job-footer {
+	padding: 20rpx 30rpx 0 30rpx;
+	width: 100%;
+	background-color: #fff;
+	margin-top: 25rpx;
+}
+.job-footer{
+	padding-bottom: 150rpx;
+}
+.jobname{
+	width: 100%;
+}
+.job-info, .job-summary{
+	padding: 20rpx;
+	width: 100%;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.jobname-title{
+	display: inline-block;
+	width: 75%;
+	font-size: 50rpx;
+	color: #000
+}
+.refresh-title {
+	display: inline-block;
+	width: 25%;
+	color: rgba(0,0,0,.3);
+	text-align: center;
+	font-size: 25rpx;
+}
+.company{
+	margin: 20rpx 0 20rpx 5rpx;
+	color: deepskyblue;
+	font-size: 30rpx;
+}
+.jobname:before{
+	font-family: 'iconfont';
+	content: '\e602';
+	color: rgba(0,0,0,.3);
+	margin-right: 10rpx;
+}
+.company:before{
+	font-family: 'iconfont';
+	content: '\e607';
+	color: rgba(0,0,0,.3);
+	margin-right: 20rpx;
+}
+text {
+	color: rgba(0,0,0,.6);
+}
+
+.salary-row, .intern-row {
+	width: 100%;
+	padding-left: 15rpx;
+}
+.row-item{
+	display: inline-block;
+	width: 33%;
+	text-align: left;
+	font-size: 26rpx;
+}
+.salary:before{
+	font-family: 'iconfont';
+	content: '\e6fe';
+	color: rgba(0,0,0,.3);
+	margin-right: 10rpx;
+}
+.worksite{
+	padding-left: 5rpx;
+}
+.worksite:before{
+	font-family: 'iconfont';
+	content: '\e613';
+	color: rgba(0,0,0,.3);
+	margin-right: 10rpx;
+}
+.education:before{
+	font-family: 'iconfont';
+	content: '\e69e';
+	color: rgba(0,0,0,.3);
+	margin-right: 10rpx;
+}
+.interMonth:before{
+	font-family: 'iconfont';
+	content: '\e605';
+	font-size: 20rpx;
+	color: rgba(0,0,0,.3);
+	margin-right: 10rpx;
+}
+.internWeek:before{
+	font-family: 'iconfont';
+	content: '\e6a9';
+	color: rgba(0,0,0,.3);
+	margin-right: 10rpx;
+}
+.be-regular:before{
+	font-family: 'iconfont';
+	content: '\e60f';
+	color: rgba(0,0,0,.3);
+	margin-right: 10rpx;
+}
+
+.company-desc{
+	padding: 20rpx 25rpx;
+	width: 100%;
+}
+
+.company-logo image{
+	width: 150rpx;
+	height: 150rpx;
+	border-radius: 50%;
+}
+.company-desc-companyname{
+	width: 75%;
+}
+
+.company-desc-companyname .name{
+	color: rgba(0,0,0,.5);
+	margin-bottom: 20rpx;
+}
+.company-logo{
+	padding-right: 20rpx;
+	width: 25%;
+}
+
+.job-body-title:before {
+	font-family: 'iconfont';
+	content: '\e621';
+	color: deepskyblue;
+	margin-right: 20rpx;
+}
+.job-body-title{
+	padding-left: 20rpx;
+	padding-bottom: 20rpx;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.jobdesc{
+	width: 100%;
+}
+.job-row{
+	padding: 20rpx 30rpx;
+}
+.job-detail-item{
+	padding: 15rpx 20rpx;
+	color: rgba(0,0,0,.3);
+	font-size: 32rpx;
+}
+.info-more{
+	width: 100%;
+}
+.more-row {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 100%;
+	padding: 20rpx;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.more-row .email{
+	color: dodgerblue;
+}
+
+.more-row .welfare-title:before {
+	font-family: 'iconfont';
+	content: '\e6ad';
+	color: rgba(0,0,0,.3);
+	margin-right: 10rpx;
+}
+
+.more-row .email-title:before {
+	font-family: 'iconfont';
+	content: '\e6a4';
+	color: rgba(0,0,0,.3);
+	margin-right: 10rpx;
+}
+
+.more-row .note-title:before {
+	font-family: 'iconfont';
+	content: '\e63a';
+	color: rgba(0,0,0,.3);
+	margin-right: 10rpx;
+}
+
+.more-row .companyAddr-title:before {
+	font-family: 'iconfont';
+	content: '\e614';
+	color: rgba(0,0,0,.3);
+	margin-right: 10rpx;
+}
+
+.more-row .deadline-title:before {
+	font-family: 'iconfont';
+	content: '\e679';
+	color: rgba(0,0,0,.3);
+	margin-right: 10rpx;
+}
+.pad {
+	padding-left: 30rpx;
+	padding-bottom: 15rpx;
+	font-size: 40rpx;
+	color: rgba(0,0,0,.6);
+}
+.pad-larger{
+	padding-left: 75rpx;
+	padding-right: 20rpx;
+	font-size: 35rpx;
+	color: rgba(0,0,0,.3);
+}
+.job-modal-send-email{
+	position: fixed;
+	padding: 20rpx 0;
+	width: 100%;
+	height: 100rpx;
+	bottom: 0;
+	z-index: 100;
+	background-color: rgba(248,248,255, .5);
+}
+.favorite {
+	margin-left: 25rpx;
+	padding: 30rpx 30rpx;
+	text-align: center;
+	border-radius: 10rpx;
+	background-color: #F5F5F5;
+}
+.send-resume {
+	margin-left: 20rpx;
+	padding: 30rpx 50rpx;
+	border-radius: 10rpx;
+	background-color: royalblue;
+}
+.send-resume text{
+	color: #F8F8FF;
+}
+.send-resume text:before {
+	font-family: 'iconfont';
+	content: '\e603';
+	font-size: 30rpx;
+	margin-right: 10rpx;
+}
+.favorite .save:before {
+	font-family: 'iconfont';
+	content: '\e606';
+	color: rgba(0,0,0,.3);
+	margin-right: 10rpx;
+}
+.favorite .del-save:before {
+	font-family: 'iconfont';
+	content: '\e601';
+	color: red;
+	margin-right: 10rpx;
+}

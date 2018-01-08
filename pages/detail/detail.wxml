@@ -1,2 +1,92 @@
 <!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<view class="container">
+	<view class="job-header-container">
+		<view class="job-info flex-column-start">
+			<view class="jobname flex">
+				<text class="jobname-title text-over">{{job.jobname}}</text>
+				<text class="refresh-title">{{job.meta.updateAt}}刷新</text>
+			</view>
+			<text class="company">{{job.company}}</text>
+		</view>
+		<view class="job-summary flex-column">
+			<view class="salary-row">
+				<text class="row-item salary" wx:if="{{job.salary != '不限'}}">{{job.salary}}元/天</text>
+				<text class="row-item salary" wx:if="{{job.salary == '不限'}}">薪资不限</text>
+				<text class="row-item worksite">{{job.worksite.addr}}</text>
+				<text class="row-item education" wx:if="{{job.education != '不限'}}">{{job.education}}</text>
+				<text class="row-item education" wx:if="{{job.education == '不限'}}">学历不限</text>
+			</view>
+			<view class="intern-row">
+				<text class="interMonth row-item" wx:if="{{item.interMonth != '0'}}">{{job.interMonth}}个月</text>
+				<text class="interMonth row-item" wx:if="{{item.interMonth == '0'}}">实习月份面议</text>
+				<text class="internWeek row-item" wx:if="{{item.internWeek != '0'}}">{{job.internWeek}}天/周</text>
+				<text class="internWeek row-item" wx:if="{{item.internWeek == '0'}}">实习天数面议</text>
+				<text class="be-regular row-item" wx:if="{{job.canBeRegular == '是'}}">可转正</text>
+				<text class="be-regular row-item" wx:if="{{job.canBeRegular == '否'}}">不可转正</text>
+				<text class="be-regular row-item" wx:if="{{job.canBeRegular == '不详'}}">面议</text>
+			</view>
+		</view>
+		<view class="company-desc flex">
+			<view class="company-desc-companyname flex-column-start">
+				<text class="name">{{job.company}}</text>
+				<text class="category">{{job.category.name}}</text>
+			</view>
+			<view class="company-logo flex">
+				<image class="logo" src="https://www.weservice.cn/uploads/{{job.image}}"></image>
+			</view>
+		</view>
+	</view>
+	<view class="job-body">
+		<view class="job-body-title">职位描述</view>
+		<view class="jobdesc flex-column-start">
+			<view class="job-row job-content">
+				<text class="job-content-title">【工作内容】</text>
+				<block wx:for="{{job.jobcontent}}">
+					<view class="job-detail-item job-content-detail">{{item}}</view>
+				</block>
+			</view>
+			<view class="job-row job-skill">
+				<text class="job-skill-title">【职位要求】</text>
+				<block wx:for="{{job.skill}}">
+					<view class="job-detail-item job-skill-detail">{{item}}</view>
+				</block>
+			</view>
+		</view>
+	</view>
+
+	<view class="job-footer">
+		<view class="info-more flex-column">
+			<view class="more-row job-welfare " wx:if="{{job.welfare}}">
+				<text class="pad welfare-title">公司福利</text>
+				<text class="pad-larger welfare">{{job.welfare}}</text>
+			</view>
+			<view class="more-row job-resume " wx:if="{{job.email}}">
+				<text class="pad email-title">简历投递邮箱</text>
+				<text class="pad-larger email">{{job.email}}</text>
+			</view>
+			<view class="more-row job-note " wx:if="{{job.note}}">
+				<text class="pad note-title">岗位备注</text>
+				<text class="pad-larger note">{{job.note}}</text>
+			</view>
+			<view class="more-row job-companyAddr " wx:if="{{job.companyAddr}}">
+				<text class="pad companyAddr-title">公司地址</text>
+				<text class="pad-larger addr">{{job.companyAddr}}</text>
+			</view>
+			<view class="more-row job-deadline " wx:if="{{job.deadline}}">
+				<text class="pad deadline-title">截止日期</text>
+				<text class="pad-larger deadline">{{job.deadline}}</text>
+			</view>
+		</view>
+	</view>
+
+	<view class="job-modal-send-email flex">
+		<view class="favorite" bindtap="favoriteSave" data-id="{{job._id}}">
+			<text class="save" wx:if="{{!isFavorite}}">收藏该职位</text>
+			<text class="del-save" wx:if="{{isFavorite}}">删除收藏</text>
+		</view>
+		<view class="send-resume" bindtap='showModal'>
+			<text>投个简历</text>
+		</view>
+	</view>
+</view>
+

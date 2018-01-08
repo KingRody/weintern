@@ -28,7 +28,7 @@ Page({
 		
 		// 获取所有岗位类型
 		wxRequest('categories', {
-			method: 'get',
+			method: 'GET',
 			success: (res) => {
 				let data = res.data;
 				if (data.success) {
@@ -46,7 +46,7 @@ Page({
 		
 		// 获取所有岗位
 		wxRequest('jobs', {
-			method: 'get',
+			method: 'GET',
 			success: (res) => {
 				let data = res.data;
 				if (data.success) {
@@ -65,7 +65,7 @@ Page({
 	// 点击修改岗位类型搜索
 	bindPickerChangeCategories: function (e) {
 		wxRequest('category', {
-			method: 'get',
+			method: 'GET',
 			data: {
 				categoryId: this.data.categories[e.detail.value]._id
 			},
@@ -119,14 +119,14 @@ Page({
 		
 		// 过滤掉实习月份
 		if (e.detail.value[1] != 0) {
-			queryData.internMonth = this.data.multiCondition[1][e.detail.value[1]];
+			queryData.interMonth = this.data.multiCondition[1][e.detail.value[1]];
 			if (e.detail.value[1] == 1) {
 				jobs = jobs.filter((item) => {
-					return parseInt(item.internMonth) < Number(parseInt(queryData.internMonth.split('-')[1])) && parseInt(item.internMonth) >= Number(queryData.internMonth.split('-')[0]);
+					return parseInt(item.interMonth) < Number(parseInt(queryData.interMonth.split('-')[1])) && parseInt(item.interMonth) >= Number(queryData.interMonth.split('-')[0]);
 				})
 			} else {
 				jobs = jobs.filter((item) => {
-					return parseInt(item.internMonth) >= parseInt(queryData.internMonth);
+					return parseInt(item.interMonth) >= parseInt(queryData.interMonth);
 				})
 			}
 		}
@@ -193,7 +193,7 @@ Page({
 	// 提交搜索
 	formSubmit: function (e) {
 		wxRequest('jobSearch', {
-			method: 'get',
+			method: 'GET',
 			data: {
 				searchType: e.detail.value.search
 			},
@@ -233,7 +233,7 @@ Page({
 		let that = this;
 		wx.showNavigationBarLoading();
 		wxRequest('jobs', {
-			method: 'get',
+			method: 'GET',
 			success: (res) => {
 				let data = res.data;
 				if (data.success) {
@@ -250,7 +250,17 @@ Page({
 				}
 			}
 		});
-	}
+	},
+	
+	/**
+	 * 用户点击右上角分享
+	 */
+	onShareAppMessage: function () {
+		return {
+			title: '您的好友给您分享了交大实习圈的干货,快来看看吧!',
+			path: `/pages/index/index`
+		}
+	},
 });
 
 

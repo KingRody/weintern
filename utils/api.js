@@ -6,8 +6,10 @@ let base = 'https://www.weservice.cn/api/';
 
 module.exports = {
 	categories: base + 'job/categories', // 查找所以岗位类型及下面岗位数据
-	jobs: base + 'job', // 查找所有岗位
+	jobs: base + 'jobs', // 查找所有岗位
 	category: base + 'job/category',  // 查找该种类下的所有岗位
 	multiquery: base + 'job/multiquery', // 多条件查询
-	jobSearch: base + 'job/search'  // 搜索框查询岗位，查询关键字为公司名称，岗位名称，岗位类型
+	jobSearch: base + 'job/search',  // 搜索框查询岗位，查询关键字为公司名称，岗位名称，岗位类型
+	job: base + 'job', // 根据id值找岗位
+	favorite: base + 'favorite/save'  // 保存收藏
 };
