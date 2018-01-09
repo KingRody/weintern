@@ -11,5 +11,7 @@ module.exports = {
 	multiquery: base + 'job/multiquery', // 多条件查询
 	jobSearch: base + 'job/search',  // 搜索框查询岗位，查询关键字为公司名称，岗位名称，岗位类型
 	job: base + 'job', // 根据id值找岗位
-	favorite: base + 'favorite/save'  // 保存收藏
+	favorite: base + 'favorite/save',  // 保存收藏
+	userInfo: base + 'user/userInfo',  // 保存用户信息
+	feedback: base + 'user/feedback',  // 保存用户反馈
 };

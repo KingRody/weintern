@@ -1,1 +1,57 @@
 /* pages/userCenter/userInfo.wxss */
+.container{
+	background-color: rgba(0,0,0, .1);
+	overflow-x: hidden;
+}
+.image-wrapper, .trumbail, .content-wrapper, .user-info, .user-feedback, .about-us{
+	width: 100%;
+}
+.image-wrapper {
+	background-color: #1296db;
+	padding-bottom: 40rpx;
+}
+.trumbail image{
+	margin-top: 100rpx;
+	width: 200rpx;
+	height: 200rpx;
+	border-radius: 50%;
+}
+.nick-name {
+	margin-top: 30rpx;
+	color: #F8F8FF;
+}
+
+.content-wrapper{
+	background-color: #fff;
+	margin-top: 50rpx;
+	padding: 5rpx 0;
+}
+.row-item{
+	padding: 15rpx 0;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.row-item view{
+	padding: 30rpx;
+}
+.row-item .point{
+	color: rgba(0,0,0,.3);
+}
+
+.info-detail:before{
+	font-family: 'iconfont';
+	content: '\e68a';
+	color: #1296db;
+	margin-right: 20rpx;
+}
+.feedback:before{
+	font-family: 'iconfont';
+	content: '\e660';
+	color: #1296db;
+	margin-right: 20rpx;
+}
+.us-detail:before{
+	font-family: 'iconfont';
+	content: '\e693';
+	color: #1296db;
+	margin-right: 20rpx;
+}

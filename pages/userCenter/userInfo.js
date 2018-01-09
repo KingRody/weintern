@@ -27,8 +27,12 @@ Page({
       })
     }
   },
-  
-  onShareAppMessage: function () {
+	
+	/**
+   * 点击进去右上角分享
+	 * @returns {{title: string, path: string}}
+	 */
+	onShareAppMessage: function () {
     let that = this;
     if (this.data.hasUserInfo) {
 	    return {
@@ -36,6 +40,34 @@ Page({
 		    path: 'pages/userCenter/userInfo'
 	    }
     }
-  }
-  
+  },
+	
+	/**
+   * 点击进入用户信息页面
+	 */
+	getInfo: function (e) {
+	  let that = this;
+    wx.navigateTo({
+      url: `/pages/user/user`
+    })
+	},
+	
+	/**
+	 * 点击进入用户信息页面
+	 */
+	getFeedBack: function () {
+		wx.navigateTo({
+			url: `/pages/feedback/feedback`
+		})
+	},
+	
+	/**
+	 * 点击进入用户信息页面
+	 */
+	getAboutUs: function () {
+		wx.navigateTo({
+			url: `/pages/aboutUs/aboutUs`
+		})
+	}
+	
 })

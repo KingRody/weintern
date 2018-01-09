@@ -1,2 +1,24 @@
 <!--pages/userCenter/userInfo.wxml-->
 
+<view class="container">
+	<view class="image-wrapper flex-column">
+		<view class="trumbail flex">
+			<image src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+		</view>
+		<view class="nick-name">{{userInfo.nickName}}</view>
+	</view>
+	<view class="content-wrapper flex-column">
+		<view class="row-item user-info flex-between" bindtap="getInfo" data-user="{{userInfo.nickName}}">
+			<view class="info-detail">我的信息</view>
+			<view class="point"> > </view>
+		</view>
+		<view class="row-item user-feedback flex-between" bindtap="getFeedBack">
+			<view class="feedback">信息反馈</view>
+			<view class="point"> > </view>
+		</view>
+		<view class="row-item about-us flex-between" bindtap="getAboutUs">
+			<view class="us-detail">关于我们</view>
+			<view class="point"> > </view>
+		</view>
+	</view>
+</view>

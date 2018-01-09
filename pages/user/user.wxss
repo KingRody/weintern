@@ -1,0 +1,60 @@
+/* pages/user/user.wxss */
+.container{
+	background-color: rgba(0,0,0,.1);
+	padding: 10rpx;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.basic-info, .get-info {
+	background-color: #fff;
+	margin-top: 30rpx;
+	width: 100%;
+	box-shadow: 0 2rpx 4rpx 2rpx rgba(0,0,0,.2) ;
+}
+
+.basic-row, .tel, .email{
+	width: 100%;
+	margin: 30rpx 0;
+	padding-bottom: 40rpx;
+	border-bottom: 1px solid rgba(0,0,0,.2);
+}
+.basic-row .title {
+	width: 100rpx;
+	padding: 0 0 0 40rpx;
+}
+
+.detail_item{
+	padding-left: 30rpx;
+	width: calc(100% - 100rpx);
+	color: rgba(0,0,0,.3);
+	font-size: 32rpx;
+	text-align: left;
+}
+.active_detail_item{
+	padding: 0 20rpx 0 10rpx;
+	width: calc(100% - 200rpx);
+	color: rgba(0,0,0,.3);
+	font-size: 32rpx;
+	text-align: left;
+}
+
+.active-title{
+	padding: 20rpx 0 20rpx 40rpx;
+	width: 120rpx;
+}
+form {
+	width: 100%;
+}
+
+.active_detail_item input {
+	padding: 20rpx 0;
+	border-radius: 10rpx;
+	border: 1px solid transparent;
+	box-shadow: 0 2px 2px 0 rgba(0,0,0,.2);
+	color: rgba(0,0,0,.7)
+}
+
+.section button {
+	margin: 80rpx 10rpx 500rpx 10rpx;
+}

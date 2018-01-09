@@ -3,7 +3,10 @@
     "pages/index/index",
     "pages/userCenter/userInfo",
     "pages/favorite/favorite",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/user/user",
+    "pages/feedback/feedback",
+    "pages/aboutUs/aboutUs"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,46 @@
+<!--pages/user/user.wxml-->
+<view class="container">
+	<view class="basic-info flex-column-start">
+		<view class="basic-row nick-name flex-start">
+			<view class="title">昵称:</view>
+			<view class="detail_item">
+				<input type="text" value="{{userInfo.nickName}}" disabled="true"/>
+			</view>
+		</view>
+		<view class="basic-row address flex-start">
+			<view class="title">地址:</view>
+			<view class="detail_item">
+				<input type="text" value="{{userInfo.country + ', ' + userInfo.province + ', ' + userInfo.city}}" disabled="true"/>
+			</view>
+		</view>
+		<view class="basic-row sex flex-start">
+			<view class="title">性别:</view>
+			<view class="detail_item">
+				<radio-group class="radio-group flex-start">
+					<radio value="男" checked="{{userInfo.gender === 1}}" disabled="true"/>男
+					<radio value="女" checked="{{userInfo.gender === 2}}" disabled="true"/>女
+					<radio value="不详" checked="{{userInfo.gender === 0}}" disabled="true"/>未知
+				</radio-group>
+			</view>
+		</view>
+	</view>
+	<view class="get-info flex-column-start">
+		<form bindsubmit='sendUserInfo'>
+			<view class="tel flex-start">
+				<view class="active-title">手机:</view>
+				<view class="active_detail_item">
+					<input type="number" name="tel" placeholder="请输入您的电话号码" placeholder-style='color: rgba(0,0,0,.2)'/>
+				</view>
+			</view>
+			<view class="email flex-start">
+				<view class="active-title">邮箱:</view>
+				<view class="active_detail_item">
+					<input type="email" name="email" placeholder="请输入您的邮箱" placeholder-style='color: rgba(0,0,0,.2)'/>
+				</view>
+			</view>
+			<view class="section">
+				<button form-type="submit" type="primary" disabled="{{haveSendUserInfo}}">提交</button>
+			</view>
+		</form>
+	</view>
+</view>
