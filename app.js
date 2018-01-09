@@ -1,4 +1,5 @@
 //app.js
+const wxRequest = require('utils/request');
 
 App({
 	// 全局用户数据
@@ -14,6 +15,19 @@ App({
 				let code = res.code;
 				if (code) {
 					console.log('获取用户登录凭证：' + code);
+					// 发送code至后台服务器换取openId
+					wxRequest('login', {
+						method: 'GET',
+						data: {
+							code: code
+						},
+						success: res => {
+							let data = res.data;
+							if (data.success) {
+								console.log(data.data);
+							}
+						}
+					})
 				} else {
 					console.log('获取用户登录态失败：' + res.errMsg);
 				}
