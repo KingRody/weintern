@@ -11,7 +11,7 @@
 		<view class="job-summary flex-column">
 			<view class="salary-row">
 				<text class="row-item salary" wx:if="{{job.salary != '不限'}}">{{job.salary}}元/天</text>
-				<text class="row-item salary" wx:if="{{job.salary == '不限'}}">薪资不限</text>
+				<text class="row-item salary" wx:if="{{job.salary == '不限' || job.salary == '不详'}}">薪资不限</text>
 				<text class="row-item worksite">{{job.worksite.addr}}</text>
 				<text class="row-item education" wx:if="{{job.education != '不限'}}">{{job.education}}</text>
 				<text class="row-item education" wx:if="{{job.education == '不限'}}">学历不限</text>
@@ -80,12 +80,15 @@
 	</view>
 
 	<view class="job-modal-send-email flex">
-		<view class="favorite" bindtap="favoriteSave" data-id="{{job._id}}">
-			<text class="save" wx:if="{{!isFavorite}}">收藏该职位</text>
-			<text class="del-save" wx:if="{{isFavorite}}">删除收藏</text>
+		<view class="job-share">
+			<button class="share" open-type="share" wx:if="{{hasUserInfo}}">分享</button>
 		</view>
-		<view class="send-resume" bindtap='showModal'>
-			<text>投个简历</text>
+		<view class="job-favorite" data-id="{{job._id}}" bindtap="favoriteSave">
+			<button class="save isNotSaved" wx:if="{{!isFavorite && hasUserInfo}}">收藏</button>
+			<button class="save isSaved" wx:if="{{isFavorite && hasUserInfo}}" disabled="{{isFavorite}}">收藏</button>
+		</view>
+		<view class="job-resume" bindtap='showModal'>
+			<button class="resume">投个简历</button>
 		</view>
 	</view>
 </view>

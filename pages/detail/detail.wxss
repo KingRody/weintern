@@ -225,39 +225,45 @@ text {
 	height: 100rpx;
 	bottom: 0;
 	z-index: 100;
-	background-color: rgba(248,248,255, .5);
+	background-color: rgba(248,248,255, .7);
 }
-.favorite {
-	margin-left: 25rpx;
-	padding: 30rpx 30rpx;
-	text-align: center;
-	border-radius: 10rpx;
-	background-color: #F5F5F5;
-}
-.send-resume {
+.resume {
 	margin-left: 20rpx;
-	padding: 30rpx 50rpx;
-	border-radius: 10rpx;
+	padding: 0 60rpx;
+	color: #F8F8FF;
 	background-color: royalblue;
 }
-.send-resume text{
-	color: #F8F8FF;
-}
-.send-resume text:before {
+
+.resume:before {
 	font-family: 'iconfont';
 	content: '\e603';
 	font-size: 30rpx;
 	margin-right: 10rpx;
 }
-.favorite .save:before {
+.isNotSaved:before {
 	font-family: 'iconfont';
 	content: '\e606';
 	color: rgba(0,0,0,.3);
 	margin-right: 10rpx;
 }
-.favorite .del-save:before {
+.isSaved:before {
 	font-family: 'iconfont';
 	content: '\e601';
 	color: red;
+	margin-right: 10rpx;
+}
+.share, .save {
+	color: rgba(0,0,0,.3);
+	background-color: transparent;
+	border: 2rpx solid transparent;
+}
+.share {
+	color: royalblue;
+	margin-right: 20rpx;
+}
+.share:before {
+	font-family: 'iconfont';
+	content: '\e62a';
+	color: royalblue;
 	margin-right: 10rpx;
 }

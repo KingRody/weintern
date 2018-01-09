@@ -260,7 +260,7 @@ Page({
 	 */
 	onShareAppMessage: function () {
 		return {
-			title: '您的好友给您分享了交大实习圈的干货,快来看看吧!',
+			title: `您的好友给您分享了交大实习圈的干货,快来看看吧!`,
 			path: `/pages/index/index`
 		}
 	},

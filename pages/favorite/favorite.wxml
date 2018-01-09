@@ -1,2 +1,43 @@
 <!--pages/favorite/favorite.wxml-->
-<text>pages/favorite/favorite.wxml</text>
+
+<view class="job-box flex">
+	<view class="job-list">
+		<block wx:if="jobs.length > 0">
+			<view wx:for="{{jobs}}">
+				<view class="job-info flex" bindtap='detail' data-job="{{item._id}}">
+					<view class="company-logo">
+						<image src="https://www.weservice.cn/uploads/{{item.image}}"></image>
+					</view>
+					<view class="job-detail flex-column">
+						<view class="job-detail-item jobname">
+							<text class="job-title text-over">{{item.jobname}}</text>
+							<text class="refresh-item highlight-light">{{item.meta.updateAt}} 刷新</text>
+						</view>
+						<view class="job-detail-item company highlight-light text-over">
+							<text class="intern-company">{{item.company}}</text>
+						</view>
+						<view class="job-detail-item job-intro">
+							<view class="detail_item worksite text-over highlight-light flex">
+								<text class="intern-worksite">{{item.worksite.addr}}</text>
+							</view>
+							<view class="detail_item intern-week text-over highlight-light flex">
+								<text class="intern-day" wx:if="{{item.internWeek != '0'}}">{{item.internWeek}}天/周</text>
+								<text class="intern-day" wx:if="{{item.internWeek == '0'}}">实习天数面议</text>
+							</view>
+							<view class="detail_item salary text-over flex">
+								<text class="intern-salary highlight-heavy " wx:if="{{item.salary != '不限' && item.salary != '不详'}}">{{item.salary}}/天</text>
+								<text class="intern-salary highlight-heavy " wx:if="{{item.salary == '不限' || item.salary == '不详'}}">薪资不限</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</block>
+		<block wx:if="{{jobs.length === 0}}">
+			<view class="empty-container flex-column">
+				<view class="empty-body highlight-light">哎呀, 您好没有收藏的职位,点击按钮去首页逛逛吧！</view>
+				<button bindtap="getIndex" class="get-index">去逛逛</button>
+			</view>
+		</block>
+	</view>
+</view>

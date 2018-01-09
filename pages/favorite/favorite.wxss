@@ -1,1 +1,97 @@
 /* pages/favorite/favorite.wxss */
+.job-box{
+	width: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.job-list{
+	width: 100%;
+	padding: 0 10rpx;
+}
+.job-info{
+	padding: 15rpx;
+	border-bottom: 1rpx solid rgba(0,0,0,.1);
+}
+.company-logo{
+	width: 25%;
+	padding: 0 5rpx;
+}
+.company-logo image{
+	width: 150rpx;
+	height: 150rpx;
+}
+.job-detail{
+	width: 75%;
+}
+.job-detail .job-detail-item {
+	width: 100%;
+}
+.job-detail .job-detail-item .detail_item{
+	display: inline-block;
+	width: 33%;
+	font-size: 25rpx;
+}
+.salary{
+	text-align: right;
+}
+.job-detail .jobname{
+	text-align: justify;
+}
+.job-title {
+	display: inline-block;
+	width: 70%;
+}
+.refresh-item{
+	display: inline-block;
+	width: 30%;
+}
+.refresh-item {
+	text-align: right;
+}
+.refresh-item, .worksite, .intern-week, .company{
+	font-size: 24rpx;
+}
+.intern-day:before{
+	font-family: 'iconfont';
+	content: '\e6a9';
+	font-size: 25rpx;
+	margin-right: 10rpx;
+}
+.intern-worksite:before {
+	font-family: 'iconfont';
+	content: '\e613';
+	font-size: 25rpx;
+	margin-right: 10rpx;
+}
+.intern-salary:before {
+	font-family: 'iconfont';
+	content: '\e6fe';
+	font-size: 25rpx;
+	margin-right: 10rpx;
+}
+.intern-company:before{
+	font-family: 'iconfont';
+	content: '\e607';
+	font-size: 25rpx;
+	margin-right: 10rpx;
+}
+.empty-body:before{
+	font-family: 'iconfont';
+	content: '\e639';
+	font-size: 40rpx;
+	margin-right: 10rpx;
+}
+.empty-container{
+	padding-top: 300rpx;
+	width: 100%;
+}
+.empty-body {
+	width: 70%;
+	text-align: center;
+}
+.get-index {
+	margin-top: 30rpx;
+	width: 200rpx;
+	color: #F8F8FF;
+	background-color: royalblue;
+}

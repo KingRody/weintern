@@ -1,6 +1,8 @@
 // pages/detail/detail.js
 const wxRequest = require('../../utils/request');
 const formatDay = require('../../utils/util');
+const app = getApp();
+
 
 Page({
 
@@ -10,7 +12,9 @@ Page({
   data: {
     job: null,
     navigateTitle: '职位详情',
-    isFavorite: false
+    isFavorite: false,
+	  userInfo: null,
+	  hasUserInfo: false,
   },
 
   /**
@@ -27,7 +31,12 @@ Page({
       icon: 'loading',
       duration: 1000
     });
-    
+	  if (app.globalData.userInfo) {
+		  this.setData({
+			  userInfo: app.globalData.userInfo,
+			  hasUserInfo: true
+		  })
+	  }
     wxRequest('job', {
       method: 'GET',
       data: {
@@ -70,13 +79,15 @@ Page({
   },
 
   /**
-   * 用户点击右上角分享
+   * 用户点击右上角分享 || 点击分享按钮分享
    */
   onShareAppMessage: function () {
     let that = this;
-    return {
-      title: '您的好友给您分享了交大实习圈的实习岗位啦,快来看看吧!',
-      path: `/pages/detail/detail?job=${that.data.job._id}`
+    if (this.data.hasUserInfo) {
+	    return {
+		    title: `您的好友${that.data.userInfo.nickName}给您分享了交大实习圈的实习岗位啦,快来看看吧!`,
+		    path: `/pages/detail/detail?job=${that.data.job._id}`
+	    }
     }
   },
 
@@ -89,32 +100,45 @@ Page({
     })
   },
   
-  // 收藏该职位
-	
-	favoriteSave: function (e) {
+  // 收藏该职位 todo 从服务器端拿用户数据
+  favoriteSave: function (e) {
     let that = this;
-    wxRequest('favorite', {
-      method: 'POST',
-      data: {
-        favoriteId: e.currentTarget.dataset['id']
-      },
-      success: (res) => {
-        let data = res.data;
-        let isFavorite = false;
-        // if (data.success) {
-        //   wx.showToast({
-        //     title: `${data.data}成功, 请到我的收藏页面查看`,
-        //     icon: 'success',
-        //     duration: 2000,
-	       //    mask: true
-        //   });
-        //   isFavorite = data.data == '收藏'
-        //   that.setData({
-        //     feedInfo: data.data
-        //   })
-        // }
+    that.setData({
+      isFavorite: true
+    });
+    wx.showModal({
+      title: '温馨提醒',
+      content: '收藏成功，去我的收藏页面逛逛吧',
+	    cancelText: '不了',
+      confirmText: '好的',
+      success: res => {
+        if (res.confirm) {
+	        wx.switchTab({
+		        url: '/pages/favorite/favorite'
+	        })
+        }else {
+          wx.hideModal();
+        }
       }
     })
-	}
-	
+  }
+  //   let that = this;
+  //   wxRequest('favorite', {
+  //     method: 'POST',
+  //     data: {
+  //       favoriteId: e.currentTarget.dataset['id']
+  //     },
+  //     success: (res) => {
+  //       let data = res.data;
+  //       if (data.success) {
+  //         that.setData({
+  //           isFavorite: true
+  //         });
+  //         wx.showModal({
+  //           title: '收藏成功'
+  //         })
+  //       }
+  //     }
+  //   })
+  // }
 })
