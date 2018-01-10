@@ -29,17 +29,17 @@
 			<view class="tel flex-start">
 				<view class="active-title">手机:</view>
 				<view class="active_detail_item">
-					<input type="number" name="tel" placeholder="请输入您的电话号码" placeholder-style='color: rgba(0,0,0,.2)'/>
+					<input type="number" value="{{userInfo.tel}}" name="tel" placeholder="请输入您的电话号码" placeholder-style='color: rgba(0,0,0,.2)' disabled="{{haveSendUserInfo || (userInfo.tel && userInfo.tel.toString().length > 0)}}"/>
 				</view>
 			</view>
-			<view class="email flex-start">
-				<view class="active-title">邮箱:</view>
-				<view class="active_detail_item">
-					<input type="email" name="email" placeholder="请输入您的邮箱" placeholder-style='color: rgba(0,0,0,.2)'/>
-				</view>
-			</view>
+			<!--<view class="email flex-start">-->
+				<!--<view class="active-title">邮箱:</view>-->
+				<!--<view class="active_detail_item">-->
+					<!--<input type="email" name="email" placeholder="请输入您的邮箱" placeholder-style='color: rgba(0,0,0,.2)'/>-->
+				<!--</view>-->
+			<!--</view>-->
 			<view class="section">
-				<button form-type="submit" type="primary" disabled="{{haveSendUserInfo}}">提交</button>
+				<button form-type="submit" type="primary" disabled="{{haveSendUserInfo || userInfo.tel.toString().length > 0}}">提交</button>
 			</view>
 		</form>
 	</view>

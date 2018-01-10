@@ -38,19 +38,38 @@ Page({
 	
 	// 发送用户反馈
 	sendFeedback: function (e) {
+		let that = this;
 		if (e.detail.value.feedback.length > 0) {
-			this.setData({
-				haveSend: true
-			});
-			console.log(e.detail.value.feedback)
 			wxRequest('feedback', {
-				method: 'PSOT',
+				method: 'GET',
 				data: {
+					openid: app.globalData.openid,
 					feedback: e.detail.value.feedback
 				},
 				success: res => {
-				
+					let data = res.data;
+					if (data.success) {
+						that.setData({
+							haveSend: true
+						});
+						wx.showModal({
+							title:'温馨提醒',
+							content: '感谢您的反馈, 我们将尽快完善!',
+							success: res => {
+								if (res.confirm) {
+									wx.switchTab({
+										url: '/pages/index/index'
+									})
+								}
+							}
+						})
+					}
 				}
+			})
+		}else {
+			wx.showModal({
+				title:'温馨提醒',
+				content: '您的反馈不能为空哦!'
 			})
 		}
 	}

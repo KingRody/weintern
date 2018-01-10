@@ -1,6 +1,7 @@
 // pages/userCenter/userInfo.js
 
 const app = getApp();
+const wxRequest = require('../../utils/request');
 
 Page({
 
@@ -25,6 +26,27 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
+    }
+    
+    if (app.globalData.openid) {
+    	wxRequest('userInfo', {
+    		method: 'GET',
+		    data: {
+    			openid: app.globalData.openid,
+    			nickName: app.globalData.userInfo.nickName,
+			    gender: app.globalData.userInfo.gender,
+			    country: app.globalData.userInfo.country,
+			    city: app.globalData.userInfo.city,
+			    province: app.globalData.userInfo.province,
+			    avatarUrl: app.globalData.userInfo.avatarUrl,
+		    },
+		    success: res => {
+    			let data = res.data;
+    			if (data.success) {
+    				console.log('添加信息成功')
+			    }
+		    }
+	    })
     }
   },
 	

@@ -75,19 +75,12 @@
 	font-size: 25rpx;
 	margin-right: 10rpx;
 }
-.empty-body:before{
-	font-family: 'iconfont';
-	content: '\e639';
-	font-size: 40rpx;
-	margin-right: 10rpx;
-}
 .empty-container{
-	padding-top: 300rpx;
-	width: 100%;
+	padding: 300rpx 50rpx;
+	width: calc(100% - 100rpx);
 }
-.empty-body {
-	width: 70%;
-	text-align: center;
+.empty-body{
+	margin-top: 40rpx;
 }
 .get-index {
 	margin-top: 30rpx;
