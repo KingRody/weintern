@@ -5,7 +5,7 @@
 	overflow-x: hidden;
 }
 .job-header-container, .job-body, .job-footer {
-	padding: 20rpx 30rpx 0 30rpx;
+	padding-top: 20rpx;
 	width: 100%;
 	background-color: #fff;
 	margin-top: 25rpx;
@@ -207,14 +207,17 @@ text {
 	margin-right: 10rpx;
 }
 .pad {
+	width: calc(100% - 60rpx);
 	padding-left: 30rpx;
+	padding-right: 30rpx;
 	padding-bottom: 15rpx;
 	font-size: 40rpx;
 	color: rgba(0,0,0,.6);
 }
 .pad-larger{
+	width: calc(100% - 105rpx);
 	padding-left: 75rpx;
-	padding-right: 20rpx;
+	padding-right: 30rpx;
 	font-size: 35rpx;
 	color: rgba(0,0,0,.3);
 }

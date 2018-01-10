@@ -57,24 +57,24 @@
 	<view class="job-footer">
 		<view class="info-more flex-column">
 			<view class="more-row job-welfare " wx:if="{{job.welfare}}">
-				<text class="pad welfare-title">公司福利</text>
-				<text class="pad-larger welfare">{{job.welfare}}</text>
+				<view class="pad welfare-title">公司福利</view>
+				<view class="pad-larger welfare">{{job.welfare}}</view>
 			</view>
 			<view class="more-row job-resume " wx:if="{{job.email}}">
-				<text class="pad email-title">简历投递邮箱</text>
-				<text class="pad-larger email">{{job.email}}</text>
+				<view class="pad email-title">简历投递邮箱</view>
+				<view class="pad-larger email">{{job.email}}</view>
 			</view>
 			<view class="more-row job-note " wx:if="{{job.note}}">
-				<text class="pad note-title">岗位备注</text>
-				<text class="pad-larger note">{{job.note}}</text>
+				<view class="pad note-title">岗位备注</view>
+				<view class="pad-larger note">{{job.note}}</view>
 			</view>
 			<view class="more-row job-companyAddr " wx:if="{{job.companyAddr}}">
-				<text class="pad companyAddr-title">公司地址</text>
-				<text class="pad-larger addr">{{job.companyAddr}}</text>
+				<view class="pad companyAddr-title">公司地址</view>
+				<view class="pad-larger addr">{{job.companyAddr}}</view>
 			</view>
 			<view class="more-row job-deadline " wx:if="{{job.deadline}}">
-				<text class="pad deadline-title">截止日期</text>
-				<text class="pad-larger deadline">{{job.deadline}}</text>
+				<view class="pad deadline-title">截止日期</view>
+				<view class="pad-larger deadline">{{job.deadline}}</view>
 			</view>
 		</view>
 	</view>
@@ -85,7 +85,7 @@
 		</view>
 		<view class="job-favorite" data-id="{{job._id}}" bindtap="favoriteSave">
 			<button class="save isNotSaved" wx:if="{{!isFavorite && hasUserInfo}}">收藏</button>
-			<button class="save isSaved" wx:if="{{isFavorite && hasUserInfo}}" disabled="{{isFavorite}}">收藏</button>
+			<button class="save isSaved" wx:if="{{isFavorite && hasUserInfo}}">已收藏</button>
 		</view>
 		<view class="job-resume" bindtap='showModal'>
 			<button class="resume">投个简历</button>

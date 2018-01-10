@@ -1,12 +1,15 @@
-let api = require('./api')
+let api = require('./api');
+const app = getApp();
 
 let wxRequest = function(path, params) {
-	// wx.showToast({
-	//   title: '加载中',
-	//   icon: 'loading'
-	// })
 	
-	let url = api[path]
+	wx.showToast({
+	  title: '加载中',
+	  icon: 'loading',
+		duration: 2000
+	});
+
+	let url = api[path];
 	
 	wx.request({
 		url: url,

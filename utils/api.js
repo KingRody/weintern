@@ -15,4 +15,6 @@ module.exports = {
 	userInfo: base + 'user/userInfo',  // 保存用户信息
 	feedback: base + 'user/feedback',  // 保存用户反馈
 	login: base + 'wx/login', // 发送随机code到后台换取凭证
+	favoriteList: base + 'wx/favoriteList',  // 获取收藏列表
+	isFavorite: base + 'wx/isFavorite',  // 是否被收藏
 };

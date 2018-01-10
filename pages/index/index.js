@@ -20,11 +20,6 @@ Page({
 	
 	onLoad: function () {
 		let that = this;
-		wx.showToast({
-			title: '正在加载中',
-			icon: 'loading',
-			duration: 5000
-		});
 		wx.showNavigationBarLoading();
 		
 		// 获取所有岗位类型
