@@ -13,11 +13,14 @@ Page({
 		multiCondition: [['不限', '1-3天', '3天以上'], ['不限', '1-3月', '3月以上'], ['不限', '0-250', '250以上'], ['不限', '专科', '本科', '硕士及以上'], ['不限', '不可转正', '可转正']],
 		multiIndex: [0, 0, 0, 0, 0], // 多列选择选定的筛选条件
 		multiIndexLen: 0, // 多列选择筛选条件的长度
-		jobs: [],
-		pageStart: 0,
-		jobCount: 30,
-		jobsTmp:[],
-		allJobs:[]
+		jobs: [], // 展示的所有职位
+		pageStart: null,  // 所有工作请求的初始数据序号
+		jobCount: 30,  // 类别和所有岗位下一次请求的数据长度
+		categoryPageStart: null,  // 职位类别下初始数据序号
+		isAll: true,
+		jobsTmp:[],  // 用于筛选的所有职位
+		allJobs:[],  // 用于搜索的所有数据
+		haveReachBottom: false  // 是否第一次上拉加载更多
 	},
 	
 	onLoad: function () {
@@ -46,17 +49,17 @@ Page({
 		wxRequest('jobs', {
 			method: 'GET',
 			data: {
-				start: that.data.pageStart,
+				start: 0,
 				count: that.data.jobCount
 			},
 			success: (res) => {
 				let data = res.data;
 				if (data.success) {
-					console.log(data);
 					data.data.forEach((item) => {
 						item.meta.updateAt = formatDay.formatDay(item.meta.updateAt);
 					});
 					that.setData({
+						pageStart: data.data.length,
 						jobs: data.data,
 						jobsTmp: data.data,
 						allJobs: data.data
@@ -69,19 +72,30 @@ Page({
 	},
 	// 点击修改岗位类型搜索
 	bindPickerChangeCategories: function (e) {
+		let that = this;
+		
+		this.setData({
+			isAll: false,
+			haveReachBottom: false
+		});
+		
 		wxRequest('category', {
 			method: 'GET',
 			data: {
-				categoryId: this.data.categories[e.detail.value]._id
+				start: 0,
+				count: that.data.jobCount,
+				categoryId: that.data.categories[e.detail.value]._id
 			},
 			success: (res) => {
 				let data = res.data;
+				console.log(data);
 				if (data.success) {
 					data.data.forEach((item) => {
 						item.meta.updateAt = formatDay.formatDay(item.meta.updateAt);
 					});
 					
 					this.setData({
+						categoryPageStart: data.data.length,
 						jobs: data.data,
 						jobsTmp: data.data
 					})
@@ -97,7 +111,6 @@ Page({
 	
 	// 点击修改筛选条件
 	bindMultiPickerChange: function (e) {
-		
 		// 本地查询，todo 考虑后续改善数据结构在服务器上查询
 		let jobs = this.data.jobsTmp;
 		let queryData = {};
@@ -236,9 +249,18 @@ Page({
 	// 下拉刷新
 	onPullDownRefresh: function () {
 		let that = this;
+		this.setData({
+			isAll: true,
+			haveReachBottom: false
+		});
+		
 		wx.showNavigationBarLoading();
 		wxRequest('jobs', {
 			method: 'GET',
+			data: {
+				start: 0,
+				count: that.data.jobCount
+			},
 			success: (res) => {
 				let data = res.data;
 				if (data.success) {
@@ -246,6 +268,7 @@ Page({
 						item.meta.updateAt = formatDay.formatDay(item.meta.updateAt);
 					});
 					that.setData({
+						pageStart: data.data.length,
 						jobs: data.data,
 						jobsTmp: data.data,
 						allJobs: data.data
@@ -259,7 +282,95 @@ Page({
 	
 	// 上拉加载更多
 	onReachBottom: function () {
-	
+		let that = this;
+		if (this.data.isAll) {
+			wxRequest('jobs', {
+				method: 'GET',
+				data: {
+					start: that.data.pageStart,
+					count: that.data.jobCount
+				},
+				success: (res) => {
+					let data = res.data;
+					if (data.success) {
+						data.data.forEach((item) => {
+							item.meta.updateAt = formatDay.formatDay(item.meta.updateAt);
+						});
+						wx.showToast({
+							title: '正在加载',
+							icon: 'loading',
+							duration: 2000,
+							mask: true
+						});
+						that.setData({
+							pageStart: that.data.pageStart + data.data.length,
+							jobs: that.data.jobs.concat(data.data),
+							jobsTmp: that.data.jobs.concat(data.data),
+							allJobs: that.data.jobs.concat(data.data)
+						});
+						if (data.data.length === 0 && !that.data.haveReachBottom) {
+							wx.showModal({
+								title: '温馨提醒',
+								content: '我也是有底线的啦，还没找到? 试试搜索吧!',
+								success: res => {
+									if (res.confirm) {
+										wx.pageScrollTo({
+											scrollTop: 0
+										})
+									}
+								}
+							});
+							
+							that.setData({
+								haveReachBottom: true
+							})
+						}
+						wx.hideNavigationBarLoading();
+						wx.hideToast();
+					}
+				}
+			})
+		}else {
+			wxRequest('category', {
+				method: 'GET',
+				data: {
+					start: that.data.categoryPageStart,
+					count: that.data.jobCount,
+					categoryId: that.data.categoryId
+				},
+				success: (res) => {
+					let data = res.data;
+					if (data.success) {
+						data.data.forEach((item) => {
+							item.meta.updateAt = formatDay.formatDay(item.meta.updateAt);
+						});
+						
+						that.setData({
+							categoryPageStart: that.data.categoryPageStart + data.data.length,
+							jobs: that.data.jobs.concat(data.data),
+							jobsTmp: that.data.jobs.concat(data.data)
+						});
+						console.log(that.data.categoryPageStart);
+						if (data.data.length === 0 && !that.data.haveReachBottom) {
+							wx.showModal({
+								title: '温馨提醒',
+								content: '我也是有底线的啦，还没找到? 试试搜索吧!',
+								success: res => {
+									if (res.confirm) {
+										wx.pageScrollTo({
+											scrollTop: 0
+										})
+									}
+								}
+							});
+							that.setData({
+								haveReachBottom: true
+							})
+						}
+					}
+				}
+			});
+		}
 	},
 	
 	
