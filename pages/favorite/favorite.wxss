@@ -88,3 +88,9 @@
 	color: #F8F8FF;
 	background-color: royalblue;
 }
+.reAuth {
+	width: 180rpx;
+	height: 80rpx;
+	font-size: 30rpx;
+	margin-top: 50rpx;
+}

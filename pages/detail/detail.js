@@ -14,7 +14,6 @@ Page({
 		job: null,
 		navigateTitle: '职位详情',
 		isFavorite: false,
-		userInfo: null,
 		hasUserInfo: false,
 	},
 	
@@ -33,7 +32,6 @@ Page({
 		}
 		if (app.globalData.userInfo) {
 			this.setData({
-				userInfo: app.globalData.userInfo,
 				hasUserInfo: true
 			})
 		}

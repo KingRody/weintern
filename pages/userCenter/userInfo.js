@@ -21,13 +21,6 @@ Page({
       title: '个人中心'
     });
     
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    }
-    
     if (app.globalData.openid) {
     	wxRequest('userInfo', {
     		method: 'GET',
@@ -49,6 +42,18 @@ Page({
 	    })
     }
   },
+	
+	/**
+	 * 监听页面显示
+	 */
+	onShow: function () {
+		if (app.globalData.userInfo) {
+			this.setData({
+				userInfo: app.globalData.userInfo,
+				hasUserInfo: true
+			})
+		}
+	},
 	
 	/**
    * 点击进去右上角分享

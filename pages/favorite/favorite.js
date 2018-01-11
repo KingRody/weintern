@@ -10,7 +10,6 @@ Page({
 	 */
 	data: {
 		openid: null,
-		userInfo: null,
 		hasUserInfo: false,
 		jobs: []  // 收藏的职位
 	},
@@ -31,7 +30,6 @@ Page({
 		}
 		if (app.globalData.userInfo) {
 			this.setData({
-				userInfo: app.globalData.userInfo,
 				hasUserInfo: true
 			})
 		}
@@ -46,12 +44,12 @@ Page({
 				let data = res.data;
 				console.log(data.data);
 				if (data.success) {
-					data.data.map((item) => {
+					data.data.forEach((item) => {
 						item.meta.updateAt = formatDay.formatDay(item.meta.updateAt);
 					});
 					that.setData({
 						jobs: data.data
-					})
+					});
 					wx.hideNavigationBarLoading();
 				}
 			}
@@ -81,7 +79,61 @@ Page({
 	
 	getIndex: function () {
 		wx.switchTab({
-		  url: '/pages/index/index'
+			url: '/pages/index/index'
+		})
+	},
+	
+	// 下拉刷新
+	onPullDownRefresh: function () {
+		let that = this;
+		wx.showNavigationBarLoading();
+		wxRequest('favoriteList', {
+			method: 'GET',
+			data: {
+				openid: app.globalData.openid
+			},
+			success: (res) => {
+				let data = res.data;
+				if (data.success) {
+					data.data.forEach((item) => {
+						item.meta.updateAt = formatDay.formatDay(item.meta.updateAt);
+					});
+					that.setData({
+						jobs: data.data
+					});
+					wx.hideNavigationBarLoading();
+					wx.stopPullDownRefresh();
+				}
+			}
+		});
+	},
+	
+	reGetUserInfo: function () {
+		let that = this;
+		wx.openSetting({
+			success: res => {
+				// 用户已经同意小程序获取用户信息，后续调用 wx.getUserInfo 接口不会弹窗询问
+				wx.getUserInfo({
+					success: res => {
+						console.log('1');
+						app.globalData.userInfo = res.userInfo;
+						console.log(app.globalData.userInfo)
+						that.setData({
+							hasUserInfo: true
+						});
+						wx.showModal({
+							title: '温馨提示',
+							content: '授权成功',
+							// success: res => {
+							// 	wx.reLaunch({
+							// 		url: '/pages/favorite/favorite'
+							// 	})
+							// }
+						})
+					},
+				})
+			},
 		})
 	}
+	
 })

@@ -56,8 +56,10 @@
 	margin-right: 20rpx;
 }
 
-.empty-container {
-	padding: 0 30rpx;
-	background-color: #fff;
-	margin-top: 300rpx;
+.empty-container{
+	padding: 300rpx 50rpx;
+	width: calc(100% - 100rpx);
+}
+.empty-body{
+	margin-top: 40rpx;
 }

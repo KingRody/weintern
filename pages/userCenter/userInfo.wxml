@@ -2,8 +2,9 @@
 
 
 <block wx:if="{{!hasUserInfo}}">
-	<view class="empty-container flex">
-		<text class="empty-body highlight-light">您好, 由于您拒绝了授权，导致信息无法显示，请您前往微信首页下拉删除weintern小程序，并重新载入打开进行授权登录</text>
+	<view class="empty-container flex-column">
+		<icon type="warn"></icon>
+		<text class="empty-body highlight-light">您好, 由于您拒绝了授权，导致信息无法显示，请您前往收藏页面进行重新授权或者面进行重新授删除weintern小程序，并重新载入打开进行授权登录</text>
 	</view>
 </block>
 <block wx:else>
