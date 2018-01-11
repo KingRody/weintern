@@ -52,6 +52,7 @@ Page({
 			success: (res) => {
 				let data = res.data;
 				if (data.success) {
+					console.log(data);
 					data.data.forEach((item) => {
 						item.meta.updateAt = formatDay.formatDay(item.meta.updateAt);
 					});
