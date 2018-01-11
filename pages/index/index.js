@@ -14,6 +14,8 @@ Page({
 		multiIndex: [0, 0, 0, 0, 0], // 多列选择选定的筛选条件
 		multiIndexLen: 0, // 多列选择筛选条件的长度
 		jobs: [],
+		pageStart: 0,
+		jobCount: 30,
 		jobsTmp:[],
 		allJobs:[]
 	},
@@ -43,6 +45,10 @@ Page({
 		// 获取所有岗位
 		wxRequest('jobs', {
 			method: 'GET',
+			data: {
+				start: that.data.pageStart,
+				count: that.data.jobCount
+			},
 			success: (res) => {
 				let data = res.data;
 				if (data.success) {
@@ -249,6 +255,12 @@ Page({
 			}
 		});
 	},
+	
+	// 上拉加载更多
+	onReachBottom: function () {
+	
+	},
+	
 	
 	/**
 	 * 用户点击右上角分享
