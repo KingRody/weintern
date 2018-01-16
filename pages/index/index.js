@@ -173,7 +173,7 @@ Page({
 		
 		// 过滤是否可转正
 		if (e.detail.value[4] != 0) {
-			queryData.canBeRegular = this.data.multiCondition[4][e.detail.value[4]];
+			queryData.canBeRegular = this.data.multiCondition[4][e.detail.value[4]] == "可转正" ? "是" : "否";
 			jobs = jobs.filter((item) => {
 				return item.canBeRegular == '不详' || item.canBeRegular == queryData.canBeRegular;
 			})
