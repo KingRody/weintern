@@ -11,7 +11,7 @@ Page({
 	data: {
 		openid: null,
 		hasUserInfo: false,
-		jobs: []  // 收藏的职位
+		jobs: null  // 收藏的职位
 	},
 	
 	/**

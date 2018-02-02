@@ -2,7 +2,7 @@
 <block wx:if="{{hasUserInfo}}">
 	<view class="job-box flex">
 		<view class="job-list">
-			<block wx:if="jobs.length > 0">
+			<block wx:if="jobs && jobs.length > 0">
 				<view wx:for="{{jobs}}">
 					<view class="job-info flex" bindtap='detail' data-job="{{item._id}}">
 						<view class="company-logo">
@@ -33,7 +33,7 @@
 					</view>
 				</view>
 			</block>
-			<block wx:if="{{jobs.length === 0}}">
+			<block wx:if="{{jobs && jobs.length === 0}}">
 				<view class="empty-container flex-column">
 					<view class="empty-body highlight-light">哎呀, 您好没有收藏的职位,点击按钮去首页逛逛吧！</view>
 					<button bindtap="getIndex" class="get-index">去逛逛</button>
